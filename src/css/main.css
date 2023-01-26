@@ -1,0 +1,27 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  background-color: #333333;
+  font-family: "Roboto Mono", monospace;
+}
+
+.top-hr,
+.bot-hr {
+  position: fixed;
+  width: 100vw;
+  margin: 0;
+  outline: none;
+  border-color: red;
+}
+.top-hr {
+  top: 0;
+  box-shadow: 0 20px 80px 20px red;
+}
+.bot-hr {
+  bottom: 0;
+  box-shadow: 0 -20px 80px 20px red;
+}
