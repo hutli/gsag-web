@@ -1,4 +1,4 @@
 build:
-	sudo mkdir -p /www/ghostsquadron.space
-	sudo rm -r /www/ghostsquadron.space/*
-	sudo cp -r ./src/* /www/ghostsquadron.space
+	sudo mkdir -p /www/gsag.space
+	sudo rm -rf /www/gsag.space/*
+	sudo cp -r ./src/* /www/gsag.space
