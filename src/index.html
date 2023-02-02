@@ -50,16 +50,32 @@
     <img src="/images/top_left.png" />
     <img class="blue-image-bloom" src="/images/top_left_screen.png" />
     <ul id="left-menu-list" class="flicker">
-      <li class="left-menu-item" onclick="closeMenu(this);"></li>
-      <li class="left-menu-item" onclick="changePage(this, 'home');"></li>
-      <li class="left-menu-item" onclick="changePage(this, 'about');"></li>
-      <li class="left-menu-item"></li>
-      <li class="left-menu-item"></li>
+      <li class="left-menu-item hidden" onclick="closeMenu(this);">
+        &lt;&lt; hide &lt;&lt;
+      </li>
+      <li class="left-menu-item hidden" onclick="changePage(this, 'home');">
+        home
+      </li>
+      <li class="left-menu-item hidden" onclick="changePage(this, 'about');">
+        about
+      </li>
+      <li class="left-menu-item hidden">squadrons</li>
+      <li class="left-menu-item hidden">operations</li>
       <li
-        class="left-menu-item"
+        class="left-menu-item hidden"
         onclick='window.open("https://robertsspaceindustries.com/orgs/GSAG", "_blank")'
-      ></li>
-      <li class="left-menu-item" onclick="toggleContent(this);"></li>
+      >
+        RSI
+      </li>
+      <li
+        class="left-menu-item hidden"
+        onclick='window.open("https://github.com/hutli/gsag-web", "_blank")'
+      >
+        web source
+      </li>
+      <li class="left-menu-item hidden" onclick="toggleContent(this);">
+        turn off
+      </li>
     </ul>
     <button class="left-menu-button" onclick="openMenu(this);"></button>
   </div>

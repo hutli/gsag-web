@@ -17,7 +17,7 @@
         <input class="form-input" id="username" type="text" maxlength="32" />
       </div>
     </div>
-    <form action="https://discord.gg/cZq2gEvZAb" target="_blank">
+    <form onsubmit="openMenuFirst(); return false;">
       <div class="row">
         <div class="col col__left label">password</div>
         <div class="col col__center">
@@ -34,14 +34,15 @@
       </div>
       <!-- <b class="flash">ACCESS DENIED</b> -->
       <div class="row">
-        <button
+        <button class="submit" type="submit" id="login">[login]</button
+        ><button
           class="submit"
           type="button"
-          id="login"
-          onclick="openMenuFirst();"
+          onclick="https://discord.gg/cZq2gEvZAb"
+          target="_blank"
         >
-          [login]</button
-        ><button class="submit" type="submit" name="submit">[enlist]</button>
+          [enlist]
+        </button>
       </div>
     </form>
   </div>

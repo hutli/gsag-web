@@ -36,18 +36,9 @@ async function openMenuFirst() {
   await delay(0.5);
   document.querySelector(".left-menu").classList.add("left-menu-in");
   await delay(2);
-  let menuItems = document.querySelector("#left-menu-list").children;
-  let names = [
-    "<< hide <<",
-    "home",
-    "about",
-    "squadrons",
-    "operations",
-    "RSI",
-    "turn off",
-  ];
-  for (let i = 0; i < menuItems.length; i++) {
-    await typewriteAlt(menuItems[i], names[i]);
+  for (let i of document.querySelector("#left-menu-list").children) {
+    i.classList.remove("hidden");
+    await typewriteAlt(i, i.textContent);
   }
 }
 
@@ -76,7 +67,7 @@ function toggleContent(e) {
     _turnOn();
     for (let c of [...document.querySelector("#left-menu-list").children].slice(
       1,
-      -1
+      5
     )) {
       c.classList.remove("disabled");
       c.disabled = false;
@@ -86,7 +77,7 @@ function toggleContent(e) {
     _turnOff();
     for (let c of [...document.querySelector("#left-menu-list").children].slice(
       1,
-      -2
+      5
     )) {
       c.classList.add("disabled");
       c.disabled = true;

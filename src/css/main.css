@@ -32,6 +32,10 @@ body {
   height: -webkit-fill-available;
 }
 
+.hidden {
+  display: none;
+}
+
 .disabled {
   opacity: 0.25;
   cursor: not-allowed !important;
