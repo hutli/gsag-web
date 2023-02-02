@@ -40,6 +40,12 @@ body {
   opacity: 0.25;
   cursor: not-allowed !important;
 }
+.temp-disabled {
+  text-decoration: line-through;
+  cursor: not-allowed !important;
+  color: red;
+  opacity: 0.25;
+}
 
 .left-menu {
   position: absolute;
@@ -86,7 +92,7 @@ body {
   margin-bottom: 10px;
   width: fit-content;
 }
-.left-menu-item:hover:not(.disabled) {
+.left-menu-item:hover:not(.disabled, .temp-disabled) {
   list-style-type: disclosure-closed;
   filter: brightness(140%);
 }
