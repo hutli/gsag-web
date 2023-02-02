@@ -18,7 +18,7 @@ async function typewriteAlt(element, text, time = 0.03) {
   element.textContent = text;
 }
 
-async function openMenu() {
+async function openMenuFirst() {
   document.querySelector("#login").disabled = true;
   document.querySelector("#login").classList.add("disabled");
   if (!document.querySelector("#username").value) {
@@ -38,8 +38,9 @@ async function openMenu() {
   await delay(2);
   let menuItems = document.querySelector("#left-menu-list").children;
   let names = [
+    "<< hide <<",
     "home",
-    "about org",
+    "about",
     "squadrons",
     "operations",
     "RSI",
@@ -50,34 +51,66 @@ async function openMenu() {
   }
 }
 
-function turnOff() {
+function closeMenu() {
+  document.querySelector(".left-menu").classList.remove("left-menu-in");
+  document.querySelector(".left-menu").classList.add("left-menu-peeking");
+}
+
+function openMenu() {
+  document.querySelector(".left-menu").classList.remove("left-menu-peeking");
+  document.querySelector(".left-menu").classList.add("left-menu-in");
+}
+
+function _turnOn() {
+  document.querySelector(".container").classList.remove("off");
+  document.querySelector(".container").classList.add("reset");
+}
+function _turnOff() {
   document.querySelector(".container").classList.remove("on");
   document.querySelector(".container").classList.remove("reset");
   document.querySelector(".container").classList.add("off");
 }
 
-function turnOn() {
-  document.querySelector(".container").classList.remove("off");
-  document.querySelector(".container").classList.add("reset");
+function toggleContent(e) {
+  if (e.textContent == "turn on") {
+    _turnOn();
+    for (let c of [...document.querySelector("#left-menu-list").children].slice(
+      1,
+      -1
+    )) {
+      c.classList.remove("disabled");
+      c.disabled = false;
+    }
+    typewriteAlt(e, "turn off");
+  } else {
+    _turnOff();
+    for (let c of [...document.querySelector("#left-menu-list").children].slice(
+      1,
+      -2
+    )) {
+      c.classList.add("disabled");
+      c.disabled = true;
+    }
+    typewriteAlt(e, "turn on");
+  }
 }
 
-async function changePage(page) {
-  turnOff();
-  await delay(0.5);
-  document.querySelector(".container").innerHTML = await (
-    await fetch(`/pages/${page}.html`)
-  ).text();
-  turnOn();
-}
-
-async function about() {
-  changePage("about");
-}
-async function home() {
-  changePage("home");
+async function changePage(e, page) {
+  if (!e.disabled) {
+    typewriteAlt(e, page);
+    if (window.innerWidth < 1200) {
+      closeMenu();
+    }
+    _turnOff();
+    await delay(0.5);
+    document.querySelector("#container").innerHTML = await (
+      await fetch(`/pages/${page}.html`)
+    ).text();
+    _turnOn();
+  }
 }
 
 // MAIN
 fetch("/pages/home.html").then((r) =>
-  r.text().then((t) => (document.querySelector(".container").innerHTML = t))
+  r.text().then((t) => (document.querySelector("#container").innerHTML = t))
 );

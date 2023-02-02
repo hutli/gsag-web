@@ -42,24 +42,29 @@
   <meta name="theme-color" content="#000000" />
 
   <link rel="stylesheet" href="/css/main.css" />
+  <link rel="stylesheet" href="/css/about.css" />
   <script type="text/javascript" src="/js/main.js"></script>
 </head>
 <body>
   <div class="left-menu">
     <img src="/images/top_left.png" />
     <img class="blue-image-bloom" src="/images/top_left_screen.png" />
-    <ul id="left-menu-list">
-      <li class="left-menu-item" onclick="home();"></li>
-      <li class="left-menu-item" onclick="about();"></li>
+    <ul id="left-menu-list" class="flicker">
+      <li class="left-menu-item" onclick="closeMenu(this);"></li>
+      <li class="left-menu-item" onclick="changePage(this, 'home');"></li>
+      <li class="left-menu-item" onclick="changePage(this, 'about');"></li>
       <li class="left-menu-item"></li>
       <li class="left-menu-item"></li>
       <li
         class="left-menu-item"
         onclick='window.open("https://robertsspaceindustries.com/orgs/GSAG", "_blank")'
       ></li>
-      <li class="left-menu-item" onclick="turnOff();"></li>
+      <li class="left-menu-item" onclick="toggleContent(this);"></li>
     </ul>
+    <button class="left-menu-button" onclick="openMenu(this);"></button>
   </div>
   <div class="background"></div>
-  <div class="container on"></div>
+  <div class="container on">
+    <div id="container" class="container-inner flicker"></div>
+  </div>
 </body>
